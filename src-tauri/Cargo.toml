@@ -1,10 +1,10 @@
 [package]
-name = "Lazuli"
+name = "lazuli"
 version = "0.0.0"
 description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+authors = ["Hubert Lewandowski"]
+license = "Apache 2.0"
+repository = "https://github.com/RooTender/Lazuli"
 edition = "2021"
 rust-version = "1.57"
 
