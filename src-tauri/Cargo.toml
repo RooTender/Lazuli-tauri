@@ -1,7 +1,7 @@
 [package]
 name = "lazuli"
 version = "0.0.0"
-description = "A Tauri App"
+description = "A simple note-taking tool designed for healthcare professionals to efficiently manage patient information and keep track of important details."
 authors = ["Hubert Lewandowski"]
 license = "Apache 2.0"
 repository = "https://github.com/RooTender/Lazuli"
