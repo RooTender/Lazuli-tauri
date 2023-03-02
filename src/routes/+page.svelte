@@ -1,13 +1,22 @@
 <script lang="ts">
   import Tabs from "$lib/tabs/Tabs.svelte";
   import Tab from "$lib/tabs/Tab.svelte";
+  import TabContent from "$lib/tabs/TabContent.svelte"
+  import { setContext } from "svelte";
+  import { writable, type Writable } from "svelte/store"
+
+  export let activate: string;
+  export let activeTab: Writable<string> = writable(activate);
+
+  setContext('selectedTab', activeTab);
 
   import Appointments from "$lib/Appointments.svelte";
 </script>
 
 <div class="m-4">
-    <Tabs activate="patients">
-      <Tab title="appointments"><Appointments /></Tab>
-      <Tab title="patients"><!--W.I.P. <Patients />--></Tab>
+    <Tabs>
+      <Tab title="appointments" />
+      <Tab title="patients" />
     </Tabs>
+    <TabContent activateOn="appointments"><Appointments /></TabContent>
 </div>
