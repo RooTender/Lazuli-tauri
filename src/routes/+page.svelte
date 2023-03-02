@@ -5,7 +5,7 @@
 
 <div class="m-4">
     <Tabs activeTab="patients">
-      <Tab title="appointments">TEST 1</Tab>
-      <Tab title="patients">Test 2</Tab>
+      <Tab title="appointments" />
+      <Tab title="patients" />
     </Tabs>
 </div>
