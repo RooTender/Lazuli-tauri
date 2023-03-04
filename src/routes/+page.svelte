@@ -13,10 +13,8 @@
   import Appointments from "$lib/Appointments.svelte";
 </script>
 
-<div class="m-4">
-    <Tabs>
-      <Tab title="appointments" />
-      <Tab title="patients" />
-    </Tabs>
-    <TabContent activateOn="appointments"><Appointments /></TabContent>
-</div>
+<Tabs>
+  <Tab title="appointments" />
+  <Tab title="patients" />
+</Tabs>
+<TabContent activateOn="appointments"><Appointments /></TabContent>
