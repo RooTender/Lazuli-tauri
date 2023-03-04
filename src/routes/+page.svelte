@@ -5,7 +5,7 @@
   import { setContext } from "svelte";
   import { writable, type Writable } from "svelte/store"
 
-  export let activate: string;
+  export let activate: string = "appointments";
   export let activeTab: Writable<string> = writable(activate);
 
   setContext('selectedTab', activeTab);
