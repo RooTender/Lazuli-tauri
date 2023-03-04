@@ -1,7 +1,29 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/tauri";
   import Grid from "gridjs-svelte"
+  import { h } from "gridjs";
   import "gridjs/dist/theme/mermaid.css";
+
+  const columns = [
+    "Name",
+    "Email",
+    {
+			name: 'Action',
+      formatter: (_: any, row: any) => {
+        return h('button', {
+          className: 'py-2 px-4 border rounded-md bg-blue-200 hover:bg-blue-300',
+          onClick: () => {
+            alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
+          }
+        }, 'Edit');
+      },
+    }
+  ];
+
+  const handleEdit = (name: any) => {
+    // Do something with the ID of the row that was clicked
+    console.log(`Editing row with ID ${name}`);
+  };
 
   const data = [
     { name: "John", email: "john@example.com" },
@@ -21,7 +43,7 @@
   ]
 
   const pagination = {
-    limit: 8,
+    limit: 10,
     summary: true
   }
 
@@ -30,7 +52,6 @@
 
   let filteredData: Array<any>;
   let grid: any;
-  
 
   function handleSearch(event: Event) {
     let searchQuery = (event.target as HTMLInputElement).value;
@@ -77,11 +98,11 @@
     </button>
   </div>
   
-  <Grid sort {data} {pagination} bind:instance={grid} />
+  <Grid sort {data} {pagination} bind:instance={grid} resizable {columns}/>
   
-  <div class="row">
-    <input id="greet-input" placeholder="Enter a name..." bind:value={name} />
+  <!--<div class="row">
+    <input id="greet-input" placeholder="Enter a name..." bind:value={name}/>
     <button on:click={greet}> Greet </button>
   </div>
-  <p>{greetMsg}</p>
+  <p>{greetMsg}</p>-->
 </div>
