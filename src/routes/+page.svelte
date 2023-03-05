@@ -11,6 +11,7 @@
   setContext('selectedTab', activeTab);
 
   import Appointments from "$lib/Appointments.svelte";
+	import Datatable from "$lib/Datatable.svelte";
 </script>
 
 <Tabs>
@@ -18,3 +19,4 @@
   <Tab title="patients" />
 </Tabs>
 <TabContent activateOn="appointments"><Appointments /></TabContent>
+<TabContent activateOn="patients"><Datatable /></TabContent>
