@@ -3,19 +3,19 @@
     import Grid from "gridjs-svelte"
     import { h } from "gridjs";
     import "gridjs/dist/theme/mermaid.css";
-	import { afterUpdate } from "svelte";
+	import { onMount } from "svelte";
   
     const columns: any[] = [];
-    const data: any[] = [];
     const pagination = {
       limit: 10,
       summary: true
     };
 
+    let data: any[] = [];
     let filteredData: Array<any>;
     let grid: any;
 
-    afterUpdate(() => {
+    onMount(() => {
         columns.push("Name");
         columns.push("Surname");
         columns.push("Pesel");
@@ -32,10 +32,16 @@
             },
             width: '100px'
         });
+
+        fetch();
     });
 
-    let name = "";
-    let greetMsg = "";
+    async function fetch() {
+        let response: string = await invoke("fetch", { set: "test" });
+        data = JSON.parse(response);
+        console.log(data);
+        console.log(columns);
+    }
 
     function handleSearch(event: Event) {
         let searchQuery = (event.target as HTMLInputElement).value;
@@ -65,11 +71,6 @@
         {
             searchBar?.classList.add('bg-red-100');
         }
-    }
-    
-    async function greet() {
-      // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-      greetMsg = await invoke("greet", { name });
     }
   </script>
   
