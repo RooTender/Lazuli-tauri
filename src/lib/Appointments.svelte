@@ -5,8 +5,9 @@
   import "gridjs/dist/theme/mermaid.css";
 
   const columns = [
+    "Date",
     "Name",
-    "Email",
+    "Surname",
     {
 			name: 'Action',
       formatter: (_: any, row: any) => {
@@ -21,26 +22,9 @@
     }
   ];
 
-  const handleEdit = (name: any) => {
-    // Do something with the ID of the row that was clicked
-    console.log(`Editing row with ID ${name}`);
-  };
-
   const data = [
-    { name: "John", email: "john@example.com" },
-    { name: "Mark", email: "mark@gmail.com" },
-    { name: "John", email: "john@example.com" },
-    { name: "Mark", email: "mark@gmail.com" },
-    { name: "John", email: "john@example.com" },
-    { name: "Mark", email: "mark@gmail.com" },
-    { name: "John", email: "john@example.com" },
-    { name: "Mark", email: "mark@gmail.com" },
-    { name: "John", email: "john@example.com" },
-    { name: "Mark", email: "mark@gmail.com" },
-    { name: "John", email: "john@example.com" },
-    { name: "Mark", email: "mark@gmail.com" },
-    { name: "John", email: "john@example.com" },
-    { name: "Mark", email: "mark@gmail.com" },
+    { date: "01.01.2001", name: "John", surname: "Wick" },
+    //{ name: "Mark", email: "mark@gmail.com" },
   ]
 
   const pagination = {
@@ -77,7 +61,6 @@
     {
       searchBar?.classList.add('bg-red-100');
     }
-    
   }
   
   async function greet() {
