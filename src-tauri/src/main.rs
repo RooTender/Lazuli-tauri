@@ -15,9 +15,18 @@ fn fetch(_set: &str) -> String {
     hello_world.to_string()
 }
 
+#[tauri::command]
+fn columns(tab: &str) -> String {
+    match tab.to_lowercase().as_str() {
+        "appointments" => "a,b,c,d".to_string(),
+        "patients" => "a,a,c".to_string(),
+        _ => "".to_string()
+    }
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![fetch])
+        .invoke_handler(tauri::generate_handler![fetch, columns])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

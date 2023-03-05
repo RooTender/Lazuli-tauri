@@ -19,4 +19,4 @@
   <Tab title="patients" />
 </Tabs>
 <TabContent activateOn="appointments"><Appointments /></TabContent>
-<TabContent activateOn="patients"><Datatable /></TabContent>
+<TabContent activateOn="patients"><Datatable content="patients" /></TabContent>

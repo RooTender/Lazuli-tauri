@@ -5,6 +5,8 @@
     import "gridjs/dist/theme/mermaid.css";
 	import { onMount } from "svelte";
   
+    export let content: string;
+
     const columns: any[] = [];
     const pagination = {
       limit: 10,
@@ -16,10 +18,18 @@
     let grid: any;
 
     onMount(() => {
-        columns.push("Name");
-        columns.push("Surname");
-        columns.push("Pesel");
-        columns.push("Phone");
+        setTabColumns(content);
+        fetch();
+    });
+
+    async function setTabColumns(tab: string) {
+        //let response: string = await invoke("columns", { tab: tab });
+        
+        //let columnsToAdd = response.split(';');
+        //columnsToAdd.forEach(element => {
+        //    columns.push(element);
+        //});
+
         columns.push({
             name: 'Action',
             formatter: (_: any, row: any) => {
@@ -32,15 +42,11 @@
             },
             width: '100px'
         });
-
-        fetch();
-    });
+    }
 
     async function fetch() {
-        let response: string = await invoke("fetch", { set: "test" });
-        data = JSON.parse(response);
-        console.log(data);
-        console.log(columns);
+        //let response: string = await invoke("fetch", { set: "test" });
+        //data = JSON.parse(response);
     }
 
     function handleSearch(event: Event) {
