@@ -10,11 +10,17 @@
 
   setContext('selectedTab', activeTab);
 
-  import Appointments from "$lib/Appointments.svelte";
+	import Datatable from "$lib/Datatable.svelte";
+
+  const tabs = ["appointments", "patients"];
 </script>
 
 <Tabs>
-  <Tab title="appointments" />
-  <Tab title="patients" />
+  {#each tabs as tab}
+  <Tab title="{tab}" />
+  {/each}
 </Tabs>
-<TabContent activateOn="appointments"><Appointments /></TabContent>
+
+{#each tabs as tab}
+<TabContent activateOn="{tab}"><Datatable content="{tab}" /></TabContent>
+{/each}
