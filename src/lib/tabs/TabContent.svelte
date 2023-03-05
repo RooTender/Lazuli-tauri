@@ -7,7 +7,7 @@
     let activeTab: Writable<string> = getContext('selectedTab');
 </script>
 {#if $activeTab === activateOn}
-<div>
+<div class="my-4">
     <slot />
 </div>
 {/if}
